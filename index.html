@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Inside</title>
+
+  <!-- Tipografía "exótica" desde Google Fonts: cambia aquí si querés otra -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset mínimo */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      background: #000; /* fondo negro */
+      color: #fff;      /* letras blancas */
+      font-family: "Cinzel Decorative", Georgia, "Times New Roman", serif;
+    }
+
+    /* Centrado perfecto con flexbox */
+    .wrap {
+      min-height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    /* Estilo del texto "Inside" */
+    .brand {
+      font-size: clamp(48px, 18vw, 160px); /* responsive: se ajusta según pantalla */
+      line-height: 0.9;
+      letter-spacing: 0.06em;
+      text-transform: none;
+      user-select: none;
+      -webkit-user-select: none;
+      transform: perspective(800px) rotateX(2deg); /* leve inclinación 3D */
+      filter: drop-shadow(0 8px 16px rgba(0,0,0,0.6));
+      position: relative;
+    }
+
+    /* Sutil brillo interior / contorno para dar carácter "exótico" */
+    .brand::after {
+      content: attr(data-text);
+      position: absolute;
+      inset: 0;
+      left: 0;
+      color: rgba(255,255,255,0.06);
+      z-index: -1;
+      transform: translateY(6px) scale(1.02);
+      filter: blur(6px);
+    }
+
+    /* Opcional: pequeño detalle en mobile para no abrumar */
+    @media (max-width: 420px) {
+      .brand { font-size: clamp(36px, 24vw, 72px); }
+      .brand::after { transform: translateY(4px) scale(1.01); filter: blur(4px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1 class="brand" data-text="Inside">Inside</h1>
+  </div>
+</body>
+</html>
